@@ -72,19 +72,20 @@ const students = [
         score: 95
     }
 ]
-let studentStatus;
+
+let studentStatusClass;
 
 
 const createStudentComponent = (name, subject, info, score) => {
-    if (students.score >= 60) {
-        studentStatus = "passing"
+    if (score >= 60) {
+        studentStatusClass = "passing"
     }
     else {
-        studentStatus = "failing"
+        studentStatusClass = "failing"
     }
     return `
         <div class="student">
-            <h1>${name}</h1>
+            <h1 class="xx-large ${studentStatusClass}">${name}</h1>
             <section>${subject}</section>
             <aside>${info}</aside>
         </div>
@@ -98,11 +99,9 @@ for (let i = 0; i < students.length; i++) {
     students[i].subject,
     students[i].info,
     students[i].score);
-studentHTML += singleStudentHTML
-console.log (studentHTML);
+
+    studentHTML += singleStudentHTML
 }
 
-
-document.querySelector('#container');
-
-
+const studentContainer = document.querySelector('#container');
+studentContainer.innerHTML = studentHTML
